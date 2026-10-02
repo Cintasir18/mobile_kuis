@@ -36,7 +36,6 @@ class _TimePageState extends State<TimePage> {
     super.dispose();
   }
 
-  // Mengubah waktu HH:mm menjadi menit
   int _timeToMinutes(String time) {
     final parts = time.split(':');
 
@@ -54,7 +53,6 @@ class _TimePageState extends State<TimePage> {
     return (hour * 60) + minute;
   }
 
-  // Mengubah menit menjadi format HH:mm
   String _minutesToTime(int minutes) {
     minutes = minutes % (24 * 60);
 
@@ -69,7 +67,6 @@ class _TimePageState extends State<TimePage> {
         '${minute.toString().padLeft(2, '0')}';
   }
 
-  // Validasi input waktu
   String? _validateTime(String value) {
     if (value.isEmpty) {
       return 'Waktu belum diisi';
@@ -103,7 +100,6 @@ class _TimePageState extends State<TimePage> {
     return null;
   }
 
-  // Indonesia → Malaysia + Toronto
   void _updateFromIndonesia(String value) {
     if (_isUpdating) return;
 
@@ -130,7 +126,6 @@ class _TimePageState extends State<TimePage> {
     setState(() {});
   }
 
-  // Malaysia → Indonesia + Toronto
   void _updateFromMalaysia(String value) {
     if (_isUpdating) return;
 
@@ -157,7 +152,6 @@ class _TimePageState extends State<TimePage> {
     setState(() {});
   }
 
-  // Toronto → Indonesia + Malaysia
   void _updateFromToronto(String value) {
     if (_isUpdating) return;
 
@@ -322,7 +316,6 @@ class _TimeCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              // Bendera
               Container(
                 width: 50,
                 height: 50,
@@ -336,7 +329,6 @@ class _TimeCard extends StatelessWidget {
 
               const SizedBox(width: 14),
 
-              // Nama negara
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -361,7 +353,6 @@ class _TimeCard extends StatelessWidget {
                 ),
               ),
 
-              // Input waktu
               SizedBox(
                 width: 95,
                 child: TextField(
@@ -406,7 +397,6 @@ class _TimeCard extends StatelessWidget {
             ],
           ),
 
-          // Pesan error
           if (errorText != null) ...[
             const SizedBox(height: 8),
             Row(
